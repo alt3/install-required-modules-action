@@ -19,21 +19,27 @@ async function run(): Promise<void> {
     core.setOutput('time', new Date().toTimeString())
 
     // make sure the provided RequiredModules.psd1 data file is present
-    core.info(`Looking for data file ${core.getInput('requiredModules-path')}`)
+    core.info(`Looking for data file ${core.getInput('dataFile')}`)
 
-    const requiredModulesDataFile = [
-      core.getInput('requiredModules-path'),
+    const dataFile = [
+      core.getInput('dataFile'),
       path.resolve('RequiredModules.psd1'),
       path.resolve('RequiredModules', 'RequiredModules.psd1')
     ].filter(file => fs.existsSync(file))[0]
 
-    if (!requiredModulesDataFile) {
+    core.info(`Debug datafile: ${dataFile}`)
+
+    if (dataFile === undefined) {
       throw new Error(
-        `Cannot find RequiredModules data file ${core.getInput(
-          'requiredModules-path'
-        )}`
+        `Cannot find RequiredModules data file '${core.getInput(
+          'dataFile'
+        )}' because it does not exist`
       )
     }
+
+    core.info(`dataFile exists!`)
+
+    return
 
     const hash = String(
       execFileSync('pwsh', [
@@ -41,7 +47,7 @@ async function run(): Promise<void> {
         '-nologo',
         '-noninteractive',
         '-command',
-        `$(Get-FileHash "${requiredModulesDataFile}").Hash`
+        `$(Get-FileHash "${dataFile}").Hash`
       ])
     ).trim()
 
@@ -72,9 +78,7 @@ async function run(): Promise<void> {
     } else {
       const command = path.resolve(__dirname, 'Install-RequiredModule.ps1')
 
-      core.info(
-        `PS> ${command} -RequiredModulesFile ${requiredModulesDataFile}`
-      )
+      core.info(`PS> ${command} -RequiredModulesFile ${dataFile}`)
       core.info(
         execFileSync('pwsh', [
           '-noprofile',
@@ -83,7 +87,7 @@ async function run(): Promise<void> {
           '-file',
           command,
           '-RequiredModulesFile',
-          requiredModulesDataFile,
+          dataFile,
           '-TrustRegisteredRepositories',
           '-Scope',
           'CurrentUser'
