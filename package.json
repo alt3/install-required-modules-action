@@ -5,7 +5,7 @@
   "description": "TypeScript template action",
   "main": "lib/main.js",
   "scripts": {
-    "build": "yarn clean && tsc && yarn copy-files",
+    "build": "npm clean && tsc && npm copy-files",
     "clean": "rimraf dist/",
     "copy-files": "copyfiles -u 1 src/**/*.ps1 dist/ && copyfiles -u 1 src/**/*.ps1 lib/",
     "format": "prettier --write '**/*.ts'",
