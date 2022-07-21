@@ -7,7 +7,7 @@
   "scripts": {
     "build": "yarn clean && tsc && yarn copy-files",
     "clean": "rimraf dist/",
-    "copy-files": "copyfiles -u 1 src/**/*.ps1 dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.ps1 dist/ && copyfiles -u 1 src/**/*.ps1 lib/",
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",
     "lint": "eslint src/**/*.ts",
