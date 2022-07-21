@@ -18,12 +18,22 @@ async function run(): Promise<void> {
 
     core.setOutput('time', new Date().toTimeString())
 
-    // try finding the RequiredModules.psd1 where they said it would be
-    const requiredModules = [
+    // make sure the provided RequiredModules.psd1 data file is present
+    core.info(`Looking for data file ${core.getInput('requiredModules-path')}`)
+
+    const requiredModulesDataFile = [
       core.getInput('requiredModules-path'),
       path.resolve('RequiredModules.psd1'),
       path.resolve('RequiredModules', 'RequiredModules.psd1')
     ].filter(file => fs.existsSync(file))[0]
+
+    if (!requiredModulesDataFile) {
+      throw new Error(
+        `Cannot find RequiredModules data file ${core.getInput(
+          'requiredModules-path'
+        )}`
+      )
+    }
 
     const hash = String(
       execFileSync('pwsh', [
@@ -31,7 +41,7 @@ async function run(): Promise<void> {
         '-nologo',
         '-noninteractive',
         '-command',
-        `$(Get-FileHash "${requiredModules}").Hash`
+        `$(Get-FileHash "${requiredModulesDataFile}").Hash`
       ])
     ).trim()
 
@@ -55,14 +65,16 @@ async function run(): Promise<void> {
 
     core.info(`Restore: '${psModulePath}' from cache: ${key}`)
 
-    const cacheKey = await restoreCache([psModulePath], key)
+    const cacheKey = await restoreCache([psModulePath], key) // our custom function
 
     if (cacheKey) {
       core.info(`Cache hit: ${cacheKey}`)
     } else {
       const command = path.resolve(__dirname, 'Install-RequiredModule.ps1')
 
-      core.info(`PS> ${command} -RequiredModulesFile ${requiredModules}`)
+      core.info(
+        `PS> ${command} -RequiredModulesFile ${requiredModulesDataFile}`
+      )
       core.info(
         execFileSync('pwsh', [
           '-noprofile',
@@ -71,7 +83,7 @@ async function run(): Promise<void> {
           '-file',
           command,
           '-RequiredModulesFile',
-          requiredModules,
+          requiredModulesDataFile,
           '-TrustRegisteredRepositories',
           '-Scope',
           'CurrentUser'
