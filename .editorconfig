@@ -1,0 +1,16 @@
+# EditorConfig is awesome: http://EditorConfig.org
+#
+# Copied from https://github.com/PowerShell/PowerShellEditorServices/blob/master/.editorconfig
+
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_size = 4
+
+[*.{json,ps1xml,props,xml,yaml}]
+indent_size = 2
