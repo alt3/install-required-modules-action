@@ -44,7 +44,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const dataFile = core.getInput('dataFile');
-            core.info(`DATA_FILE = ${dataFile}`);
+            core.debug(`DATA_FILE = ${dataFile}`);
         }
         catch (error) {
             if (error instanceof Error)
