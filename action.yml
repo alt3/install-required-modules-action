@@ -4,7 +4,7 @@ author: 'ALT3 B.V.'
 
 inputs:
   dataFile:
-    description: 'Path to the Required Modules data file'
+    description: 'Path to the RequiredModules data file'
     required: false
     default: ${{github.workspace}}/RequiredModules.psd1
 

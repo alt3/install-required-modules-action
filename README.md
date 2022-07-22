@@ -1,10 +1,10 @@
 # Github Action - Install Required Modules
 
-This action installs all PowerShell modules specified in a
-[`Required Modules data file`](https://github.com/alt3/install-required-modules-action/blob/main/dev/RequiredModules.psd1)
-by executing the
+This action executes the
 [Install-RequiredModule](https://github.com/Jaykul/RequiredModules)
-script.
+script to install all PowerShell modules specified in your
+ [`RequiredModules data file`](https://github.com/alt3/install-required-modules-action/blob/main/dev/RequiredModules.psd1)
+.
 
 ## Usage
 

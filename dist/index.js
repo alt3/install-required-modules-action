@@ -50,7 +50,7 @@ function run() {
             const dataFile = core.getInput('dataFile');
             core.debug(`inputs.dataFile = ${dataFile}`);
             if (!fs.existsSync(dataFile)) {
-                throw new Error(`Cannot find Required Modules data file '${core.getInput('dataFile')}' because it does not exist`);
+                throw new Error(`Cannot find RequiredModules data file '${core.getInput('dataFile')}' because it does not exist`);
             }
             // Use Powershell to calculate hash of data file
             const hash = String(cp.execFileSync('pwsh', [

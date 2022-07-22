@@ -1,4 +1,4 @@
-# Dummy Required Modules data file used by act
+# Dummy RequiredModules data file used by act
 @{
   PSScriptAnalyzer = "1.*"
   PlatyPS          = "0.*"

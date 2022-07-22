@@ -11,7 +11,7 @@ async function run(): Promise<void> {
 
     if (!fs.existsSync(dataFile)) {
       throw new Error(
-        `Cannot find Required Modules data file '${core.getInput(
+        `Cannot find RequiredModules data file '${core.getInput(
           'dataFile'
         )}' because it does not exist`
       )
