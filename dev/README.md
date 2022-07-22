@@ -14,7 +14,7 @@ act -W dev
 To build a new version of the local action in folder `dist`:
 
 ```bash
-npm run build && npm run package
+npm run compile
 ```
 
 ## TODO
