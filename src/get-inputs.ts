@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import * as path from 'path'
+// import * as path from 'path'
 
 interface Inputs {
   dataFile: string // Path to the Required Modules data file
