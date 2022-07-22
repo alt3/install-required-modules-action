@@ -105,7 +105,9 @@ function run() {
                 '-command',
                 `Install-Script Install-RequiredModule`,
                 '-Scope CurrentUser',
-                '-MinimumVersion 5.0.0'
+                '-MinimumVersion 5.0.0',
+                '-Confirm:$false',
+                '-Force'
             ])
                 .toString()
                 .trim());
