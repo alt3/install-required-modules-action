@@ -3,10 +3,6 @@ description: 'Runs the Install-RequiredModule.ps1 script'
 author: 'ALT3 B.V.'
 
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
   dataFile:
     description: 'Path to the RequiredModules.psd1 data file'
     required: false
