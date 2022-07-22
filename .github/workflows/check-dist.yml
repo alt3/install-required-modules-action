@@ -28,6 +28,9 @@ jobs:
         with:
           node-version: 16.x
 
+      - name: Show npm version
+        run: npm --version
+
       - name: Install dependencies
         run: npm ci
 
