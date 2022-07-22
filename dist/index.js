@@ -86,11 +86,11 @@ function run() {
                 core.debug(`ACT detected: skipping cache restore (https://github.com/nektos/act/issues/285)`);
             }
             else {
-                core.debug(`Attempting cache restore`);
+                core.debug(`Restoring module cache`);
                 cacheHit = yield cache.restoreCache([psModulePath], cacheKey);
             }
             if (cacheHit) {
-                core.debug(`Modules restored successfully: ${cacheHit}`);
+                core.debug(`Module cache restored successfully`);
                 return;
             }
             // ---------------------------------------------------------
@@ -155,9 +155,9 @@ function run() {
                 return;
             }
             // create cache key
-            core.debug(`Caching module path`);
-            const cacheId = yield cache.saveCache([psModulePath], cacheKey);
-            core.debug(`Cache created successfully: ${cacheId}`);
+            core.debug(`Creating module cache`);
+            yield cache.saveCache([psModulePath], cacheKey);
+            core.debug(`Module cache created successfully`);
         }
         catch (error) {
             if (error instanceof Error)

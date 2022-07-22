@@ -64,12 +64,12 @@ async function run(): Promise<void> {
         `ACT detected: skipping cache restore (https://github.com/nektos/act/issues/285)`
       )
     } else {
-      core.debug(`Attempting cache restore`)
+      core.debug(`Restoring module cache`)
       cacheHit = await cache.restoreCache([psModulePath], cacheKey)
     }
 
     if (cacheHit) {
-      core.debug(`Modules restored successfully: ${cacheHit}`)
+      core.debug(`Module cache restored successfully`)
 
       return
     }
@@ -156,10 +156,10 @@ async function run(): Promise<void> {
     }
 
     // create cache key
-    core.debug(`Caching module path`)
-    const cacheId = await cache.saveCache([psModulePath], cacheKey)
+    core.debug(`Creating module cache`)
+    await cache.saveCache([psModulePath], cacheKey)
 
-    core.debug(`Cache created successfully: ${cacheId}`)
+    core.debug(`Module cache created successfully`)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
