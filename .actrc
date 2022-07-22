@@ -1,0 +1,5 @@
+# https://github.com/nektos/act#configuration
+
+-P ubuntu-latest=ghcr.io/catthehacker/ubuntu:pwsh-latest
+
+--reuse

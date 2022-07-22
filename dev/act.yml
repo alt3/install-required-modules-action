@@ -1,0 +1,17 @@
+# act job that uses local repository as the action
+
+name: 'act'
+on:
+  push:
+
+jobs:
+  selfie:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # required, see https://github.com/nektos/act/issues/228#issuecomment-626256671
+        with:
+          path: ./
+
+      - uses: ./
+        with:
+          dataFile: 'dev/RequiredModules.psd1'
