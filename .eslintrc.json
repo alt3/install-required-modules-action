@@ -47,6 +47,14 @@
       "@typescript-eslint/type-annotation-spacing": "error",
       "@typescript-eslint/unbound-method": "error"
     },
+    "overrides": [
+      {
+        "files": ["__tests__/*"],
+        "rules": {
+          "filenames/match-regex": "off"
+        }
+      }
+    ],
     "env": {
       "node": true,
       "es6": true,
