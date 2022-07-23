@@ -1,4 +1,6 @@
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Falt3%2Finstall-required-modules-action%2Fbadge%3Fref%3Dmain&style=flat-square)](https://actions-badge.atrox.dev/alt3/install-required-modules-action/goto?ref=main)
+<p align="center">
+  <a href="https://github.com/alt3/install-required-modules-action/actions"><img alt="typescript-action status" src="https://github.com/alt3/install-required-modules-action/workflows/Test/badge.svg"></a>
+</p>
 
 # Github Action - Install Required Modules
 
