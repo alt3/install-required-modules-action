@@ -1,7 +1,6 @@
 import * as cp from 'child_process'
 import * as path from 'path'
 
-
 describe('Main', function () {
   it('throws an error when RequiredModules data file cannot be found', async () => {
     // process.env['INPUT_DATAFILE'] = 'Robbie'
@@ -11,7 +10,7 @@ describe('Main', function () {
 
     // ------------------------------------------
     const options: cp.SpawnSyncOptions = {
-      env: process.env,
+      env: process.env
       // stdio: 'pipe'
       // encoding: 'utf-8'
       // stdio: ['pipe', 'pipe', 'inherit']
@@ -22,4 +21,3 @@ describe('Main', function () {
     console.log(ls)
   })
 })
-
