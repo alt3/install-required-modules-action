@@ -7,13 +7,13 @@
   "scripts": {
     "build": "tsc",
     "fix-line-endings": "lec -d ./lib/ --eolc LF --verbose",
-    "format": "prettier --write **/*.ts",
-    "format-check": "prettier --check **/*.ts",
-    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write **/*.ts __tests__/**/*.ts",
+    "format-check": "prettier --check **/*.ts __tests__/**/*.ts",
+    "lint": "eslint src/**/*.ts __tests__/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
     "compile": "npm run build && npm run fix-line-endings && npm run package",
-    "all": "npm run build && npm run lint && npm run format-check && npm run package && npm test"
+    "all": "npm run build && npm run fix-line-endings && npm run lint && npm run format-check && npm test && npm run package"
   },
   "repository": {
     "type": "git",

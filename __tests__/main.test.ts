@@ -2,22 +2,15 @@ import * as cp from 'child_process'
 import * as path from 'path'
 
 describe('Main', function () {
-  it('throws an error when RequiredModules data file cannot be found', async () => {
-    // process.env['INPUT_DATAFILE'] = 'Robbie'
-
+  it('throws the expected error when RequiredModules data file cannot be found', async () => {
     const np = process.execPath
     const ip = path.join(__dirname, '..', 'dist', 'index.js')
+    const spawn = cp.spawnSync(np, [ip])
 
-    // ------------------------------------------
-    const options: cp.SpawnSyncOptions = {
-      env: process.env
-      // stdio: 'pipe'
-      // encoding: 'utf-8'
-      // stdio: ['pipe', 'pipe', 'inherit']
-    }
+    expect(spawn.status).toBe(1)
 
-    const ls = cp.spawnSync(np, [ip], options)
-
-    console.log(ls)
+    expect(spawn.stdout.toString()).toMatch(
+      "::error::Cannot find RequiredModules data file '' because it does not exist"
+    )
   })
 })
