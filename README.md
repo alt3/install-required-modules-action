@@ -1,3 +1,5 @@
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Falt3%2Finstall-required-modules-action%2Fbadge%3Fref%3Dmain&style=flat-square)](https://actions-badge.atrox.dev/alt3/install-required-modules-action/goto?ref=main)
+
 # Github Action - Install Required Modules
 
 This action installs all Powershell modules specified in a
