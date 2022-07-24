@@ -5,7 +5,7 @@ on:
   push:
 
 jobs:
-  selfie:
+  run-self:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2 # required, see https://github.com/nektos/act/issues/228#issuecomment-626256671
