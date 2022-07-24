@@ -70,12 +70,8 @@ function run() {
                 '$Env:PSModulePath.Split([IO.Path]::PathSeparator).Where({$_.StartsWith($Home)})'
             ])).trim();
             core.debug(`psModulePath = ${psModulePath}`);
-            // Determine cache key
-            const os = process.env['ImageOS'] ||
-                process.env['RUNNER_OS'] ||
-                process.env['OS'] ||
-                '';
-            const cacheKey = [os, 'psmodules', hash.trim()].join('-');
+            // Construct cache key
+            const cacheKey = `${process.env['ImageOS']}-psmodules-${hash}`;
             core.debug(`Cache key = ${cacheKey}`);
             // ---------------------------------------------------------
             // Try to restore modules from cache UNLESS we are using act
