@@ -1,110 +1,57 @@
-# DEV
+# Developers
 
-Requirements:
+## Requirements
 
-- [Act](https://github.com/nektos/act)
-- [Docker (for Windows)](https://docs.docker.com/desktop/install/windows-install/)
+- [nektos/act](https://github.com/nektos/act) - Run your GitHub Actions locally!
+- [Docker](https://www.docker.com/get-started/)
+- [Node.js](https://nodejs.org/) 16 or higher
 
-To run act using the local repository as the action:
+## Installation
 
-```bash
-act -W dev
+```
+git clone git@github.com:alt3/install-required-modules-action.git
+cd install-required-modules-action.git
+npm run install
 ```
 
-To build a new version of the local action in folder `dist`:
+## Workflow
 
-```bash
+### 1. Make code changes
+
+Make TypeScript code changes in `src/`.
+
+### 2. Compile the action
+
+Always re-build the action package to `dist/`:
+
+```
 npm run compile
 ```
 
-## TODO
+### 3. Run action locally!
 
-## Code in Main
+Run the newly built action package using act and the `act.yml` workflow in this folder.
 
-> First, you'll need to have a reasonably modern version of `node` handy. This won't work with versions older than 9, for instance.
-
-Install the dependencies
-```bash
-$ npm install
+```
+act -W dev
 ```
 
-Build the typescript and package it for distribution
-```bash
-$ npm run build && npm run package
+### 4. Run code tests
+
+To run tests against the TypeScript code:
+
+```
+npm run test
 ```
 
-Run the tests :heavy_check_mark:
-```bash
-$ npm test
+### 5. Run linting
 
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
+To run eslint and prettier against `*.ts` files in `src` and `__tests__`:
 
-...
+```
+npm run test
 ```
 
-## Change action.yml
+### 6. Commit changes
 
-The action.yml defines the inputs and output for your action.
-
-Update the action.yml with your name, description, inputs and outputs for your action.
-
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
-
-## Change the Code
-
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
-
-```javascript
-import * as core from '@actions/core';
-...
-
-async function run() {
-  try {
-      ...
-  }
-  catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-run()
-```
-
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
-
-## Publish to a distribution branch
-
-Actions are run from GitHub repos so we will checkin the packed dist folder.
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-$ npm run package
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
-```
-
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
-
-Your action is now published! :rocket:
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
-## Validate
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
-
-```yaml
-uses: ./
-with:
-  milliseconds: 1000
-```
-
-See the [actions tab](https://github.com/actions/typescript-action/actions) for runs of this action! :rocket:
-
-## Usage:
-
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
+Files in `dist` are the actual Github Action so make sure to include them along with your code changes.

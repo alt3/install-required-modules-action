@@ -24,6 +24,6 @@ This action uses the `Install-RequiredModule` script [found here](https://github
 
 ## Contributing
 
-Development information found in the
-[dev](https://github.com/alt3/install-required-modules-action/tree/main/dev)
-folder.
+Developer information found in the
+[dev folder](https://github.com/alt3/install-required-modules-action/tree/main/dev)
+.
