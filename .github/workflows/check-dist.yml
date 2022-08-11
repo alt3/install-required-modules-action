@@ -52,4 +52,6 @@ jobs:
         if: ${{ failure() && steps.diff.conclusion == 'failure' }}
         with:
           name: dist
-          path: dist/
+          path: |
+            a/dist/
+            b/dist/
