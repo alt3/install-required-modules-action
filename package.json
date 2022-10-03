@@ -30,7 +30,7 @@
     "@actions/core": "^1.9.1"
   },
   "devDependencies": {
-    "@actions/github": "^5.1.0",
+    "@actions/github": "^5.1.1",
     "@types/jest": "^28.1.8",
     "@types/node": "^18.8.0",
     "@typescript-eslint/parser": "^5.38.1",
