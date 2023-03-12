@@ -16,7 +16,21 @@ This action installs all Powershell modules specified in a
     dataFile: 'path/to/your/RequiredModules.psd1'
 ```
 
-Input `dataFile` is optional and defaults to `${{github.workspace}}/RequiredModules.psd1`.
+## Properties
+
+Input `dataFile`:
+
+- Is optional
+- Defaults to `${{github.workspace}}/RequiredModules.psd1` 
+- Should look similar to:
+
+```posh
+@{
+    ModuleBuilder    = "2.*"
+    PSScriptAnalyzer = "1.*"
+    PlatyPS          = "0.*"
+}
+```
 
 ## Good to Know
 
