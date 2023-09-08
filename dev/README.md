@@ -4,7 +4,7 @@
 
 - [nektos/act](https://github.com/nektos/act) - Run your GitHub Actions locally!
 - [Docker](https://www.docker.com/get-started/)
-- [Node.js](https://nodejs.org/) 16 or higher
+- [Node.js](https://nodejs.org/) 18 or higher
 
 ## Installation
 
