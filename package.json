@@ -33,7 +33,7 @@
     "@actions/github": "^6.0.0",
     "@types/jest": "^28.1.8",
     "@types/node": "^20.14.11",
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.16.1",
     "@vercel/ncc": "^0.38.1",
     "copyfiles": "^2.4.1",
