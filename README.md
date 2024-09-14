@@ -4,6 +4,11 @@
 
 # Github Action - Install Required Modules
 
+> [!CAUTION]
+> ### Archived in favor of https://github.com/JustinGrote/ModuleFast.
+
+## Introduction
+
 This action installs all Powershell modules specified in a
 [`RequiredModules data file`](https://github.com/alt3/install-required-modules-action/blob/main/dev/RequiredModules.psd1)
 .
